@@ -37,6 +37,10 @@ extern NSString * const OSKPresentationOption_ActivityCompletionHandler;
  */
 extern NSString * const OSKPresentationOption_PresentationEndingHandler;
 
+extern NSString * const OSKPresentationDimissPopoverNotification;
+extern NSString * const OSKPresentationSessionStartedNotification;
+extern NSString * const OSKPresentationSessionDimissedNotification;
+
 ///-----------------------------------------------
 /// @name Presentation Manager
 ///-----------------------------------------------
@@ -69,6 +73,8 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
  Set this delegate to provide custom view controllers, or respond to view controller changes.
  */
 @property (weak, nonatomic) id <OSKPresentationViewControllers> viewControllerDelegate;
+
+@property (strong, nonatomic, readwrite) NSMutableDictionary *sessionControllers;
 
 ///-----------------------------------------------
 /// @name Singleton Access

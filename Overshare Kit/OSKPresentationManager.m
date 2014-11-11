@@ -40,6 +40,10 @@
 NSString * const OSKPresentationOption_ActivityCompletionHandler = @"OSKPresentationOption_ActivityCompletionHandler";
 NSString * const OSKPresentationOption_PresentationEndingHandler = @"OSKPresentationOption_PresentationEndingHandler";
 
+NSString * const OSKPresentationDimissPopoverNotification = @"OSKPresentationDimissPopoverNotification";
+NSString * const OSKPresentationSessionStartedNotification = @"OSKPresentationSessionStartedNotification";
+NSString * const OSKPresentationSessionDimissedNotification = @"OSKPresentationSessionDimissedNotification";
+
 static CGFloat OSKPresentationManagerActivitySheetPresentationDuration = 0.33f;
 static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 
@@ -54,7 +58,6 @@ static NSInteger OSKTextViewFontSize_Pad = 20.0f;
 >
 
 // GENERAL
-@property (strong, nonatomic, readwrite) NSMutableDictionary *sessionControllers;
 @property (strong, nonatomic, readwrite) OSKActivitySheetViewController *activitySheetViewController;
 @property (assign, nonatomic, readwrite) BOOL isAnimating;
 
@@ -230,12 +233,13 @@ static NSInteger OSKTextViewFontSize_Pad = 20.0f;
 }
 
 - (void)dismissActivitySheet:(void(^)(void))completion {
-    
     if ([self isPresentingViaPopover]) {
         [self dismissActivitySheet_Pad:completion];
     } else {
         [self dismissActivitySheet_Phone:completion];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:OSKPresentationDimissPopoverNotification object:nil];    
 }
 
 - (void)dismissActivitySheet_Phone:(void(^)(void))completion {
@@ -321,6 +325,8 @@ static NSInteger OSKTextViewFontSize_Pad = 20.0f;
     
     [self.sessionControllers setObject:sessionController forKey:session.sessionIdentifier];
     [sessionController start];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:OSKPresentationSessionStartedNotification object:nil];
 }
 
 #pragma mark - Popover Delegate
@@ -334,6 +340,8 @@ static NSInteger OSKTextViewFontSize_Pad = 20.0f;
     if (handler) {
         handler(OSKPresentationEnding_Cancelled, nil);
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:OSKPresentationDimissPopoverNotification object:nil];    
 }
 
 - (void)popoverController:(UIPopoverController *)popoverController

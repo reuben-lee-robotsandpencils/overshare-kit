@@ -89,6 +89,8 @@
             [weakSelf setSystemViewController:nil];
         }];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:OSKPresentationSessionDimissedNotification object:nil];    
 }
 
 @end
