@@ -180,6 +180,8 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
  */
 - (UIViewController <OSKPublishingViewController> *)publishingViewControllerForActivity:(OSKActivity *)activity;
 
+- (void)dismissActivitySheet:(void(^)(void))completion; 
+
 @end
 
 ///-----------------------------------------------
