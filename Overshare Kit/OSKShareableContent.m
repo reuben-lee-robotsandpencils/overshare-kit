@@ -145,7 +145,7 @@
     content.facebookItem = facebook;
     
     OSKMicroblogPostContentItem *microblogPost = [[OSKMicroblogPostContentItem alloc] init];
-    microblogPost.text = [NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
+    microblogPost.text = text; //[NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
     microblogPost.images = images;
     content.microblogPostItem = microblogPost;
     
