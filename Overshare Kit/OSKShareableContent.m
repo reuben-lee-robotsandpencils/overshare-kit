@@ -123,7 +123,8 @@
 + (instancetype)contentFromMicroblogPost:(NSString *)text authorName:(NSString *)authorName canonicalURL:(NSString *)canonicalURL images:(NSArray *)images {
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
     
-    content.title = [NSString stringWithFormat:@"Post by %@: “%@”", authorName, text];
+    //content.title = [NSString stringWithFormat:@"Post by %@: “%@”", authorName, text];
+    content.title = @"";
     
     NSURL *URLforCanonicalURL = nil;
     if (canonicalURL) {

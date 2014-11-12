@@ -16,11 +16,11 @@
 #import "OSKLogger.h"
 #import "UIColor+OSKUtility.h"
 
-static CGFloat OSKActivitySheetViewControllerSheetHeight_OneRow_Phone = 224.0f;
+static CGFloat OSKActivitySheetViewControllerSheetHeight_OneRow_Phone = 174.0f;
 static CGFloat OSKActivitySheetViewControllerSheetHeight_TwoRows_Phone = 320.0f;
 static CGFloat OSKActivitySheetViewControllerSheetHeight_ThreeRows_Phone = 416.0f;
 
-static CGFloat OSKActivitySheetViewControllerSheetHeight_OneRow_Pad = 178.0f;
+static CGFloat OSKActivitySheetViewControllerSheetHeight_OneRow_Pad = 130.0f;
 static CGFloat OSKActivitySheetViewControllerSheetHeight_TwoRows_Pad = 290.0f;
 static CGFloat OSKActivitySheetViewControllerSheetHeight_ThreeRows_Pad = 402.0f;
 
